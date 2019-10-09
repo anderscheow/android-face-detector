@@ -4,6 +4,8 @@ import husaynhakeem.io.facedetector.models.Facing
 import husaynhakeem.io.facedetector.models.Orientation
 import husaynhakeem.io.facedetector.models.convertToFacing
 import husaynhakeem.io.facedetector.models.convertToOrientation
+import kotlin.math.max
+import kotlin.math.min
 
 
 internal class FaceBoundsOverlayHandler {
@@ -19,8 +21,8 @@ internal class FaceBoundsOverlayHandler {
                                 isCameraFacingBack: Boolean,
                                 callback: (Float, Float, Orientation, Facing) -> Unit) {
 
-        val min = Math.min(overlayWidth, overlayHeight).toFloat()
-        val max = Math.max(overlayWidth, overlayHeight).toFloat()
+        val min = min(overlayWidth, overlayHeight).toFloat()
+        val max = max(overlayWidth, overlayHeight).toFloat()
         val orientation = rotation.convertToOrientation()
         val facing = isCameraFacingBack.convertToFacing()
 
